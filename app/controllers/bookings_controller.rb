@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:destroy]
 
   def new
     @booking = Booking.new
@@ -23,7 +22,4 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:pet_id, :user_id)
   end
 
-  def set_booking
-    @booking = booking.find(params[:id])
-  end
 end

@@ -11,7 +11,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def create?
-    edit?
+    true
   end
 
   def destroy?
@@ -19,7 +19,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def new?
-    edit?
+    true
   end
 
   def index?
@@ -27,7 +27,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.id == booking.user_id
+    current_user.id == rating.user_id
   end
 
   def update?
