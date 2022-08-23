@@ -23,7 +23,7 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    authorize @pet # Add this line
+    authorize @pet
     # @pet.save
   end
 

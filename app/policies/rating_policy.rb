@@ -1,4 +1,4 @@
-class PetPolicy < ApplicationPolicy
+class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -11,7 +11,7 @@ class PetPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    edit?
   end
 
   def destroy?
@@ -19,7 +19,7 @@ class PetPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    edit?
   end
 
   def index?
@@ -27,7 +27,7 @@ class PetPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.id == pet.user_id
+    current_user.id == booking.user_id
   end
 
   def update?
