@@ -1,4 +1,8 @@
-
-  <%= image_tag @pet.photo_url, alt: @pet.name, class: "pet-img rounded-top" %>
+<div><%= image_tag @pet.photo_url, alt: @pet.name, class: "card" %>
   <p><%= @pet.name %></p>
+  <p><%= @pet.race %></p>
+  <p><%= @pet.age  %></p>
+  <p><%= @pet.sexe %></p>
   <p><%= @pet.location  %></p>
+  <p><%= link_to "Book Him", new_booking_path%> for only $<%= @pet.price  %> per day!</p>
+</div>
