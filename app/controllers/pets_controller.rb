@@ -1,4 +1,6 @@
 class PetsController < ApplicationController
+  before_action :set_pet, only: [:show, :edit, :update, :destroy]
+
   def index
     @pets = policy_scope(Pet)
   end
@@ -9,14 +11,18 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
-    authorize @pet # Add this line
-  end
-
-  def update
     authorize @pet
   end
 
+  def update
+    @pet.update(pet_params)
+    authorize @pet
+    redirect_to pet_path(@pet)
+  end
+
   def destroy
+    @pet.destroy
+    redirect_to pets_path, status: :see_other
     authorize @pet
   end
 
@@ -24,12 +30,20 @@ class PetsController < ApplicationController
     @pet = Pet.new(pet_params)
     @pet.user = current_user
     authorize @pet
-    # @pet.save
+    if @pet.save
+      redirect_to pet_path(@pet)
+    else
+      render
+    end
   end
 
   private
 
   def pet_params
-    params.require(:pet).permit(:sexe, :race, :age, :photo_url, :price, :user_id, :location)
+    params.require(:pet).permit(:name, :sexe, :race, :age, :photo_url, :price, :user_id, :location)
+  end
+
+  def set_pet
+    @pet = Pet.find(params[:id])
   end
 end
