@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :bookings, only: [:new, :create, :index, :show]
   resources :pets
   resources :ratings
+  get "dashoard", to: 'pages#dashboard'
+  get "contact", to: 'pages#contact'
 end
