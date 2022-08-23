@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  s
+  before_action :authenticate_user!
   include Pundit::Authorization
 
   # Pundit: allow-list approach
