@@ -1,5 +1,4 @@
 class BookingsController < ApplicationController
-
   def index
     @bookings = policy_scope(Booking)
   end
@@ -24,6 +23,10 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:pet_id, :user_id)
+  end
+
+  def set_pet
+    @pet = Pet.find(params[:pet_id])
   end
 
 end
