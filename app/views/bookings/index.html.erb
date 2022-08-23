@@ -1,1 +1,10 @@
-<p><%= current_user.email %></p>
+<div class= "cards">
+    <% @bookings.each do |booking| %>
+    <% if booking.user_id == current_user.id %>
+        <div class="card">
+            <h3><%=  booking.total_price  %></h3>
+            <% else %>
+        </div>
+      <% end %>
+    <% end %>
+</div>
