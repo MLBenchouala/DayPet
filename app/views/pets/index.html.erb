@@ -1,6 +1,8 @@
-<ul>
-  <% @pets.each do |pet| %>
-    <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img rounded-top" %>
-    <h3><%=  pet.location  %></h3>
-  <% end %>
-</ul>
+<div class= "cards">
+    <% @pets.each do |pet| %>
+      <div class="card">
+          <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img rounded-top" %>
+          <h3><%=  pet.location  %></h3>
+      </div>
+    <% end %>
+</div>
