@@ -1,0 +1,6 @@
+        <h3>Create a booking listing</h3>
+        <%= simple_form_for [@pet, @booking] do |f| %>
+          <%= f.input :start_date, placeholder: 'today :)' %>
+          <%= f.input :end_date , placeholder: 'check the availability' %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>
