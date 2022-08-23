@@ -8,9 +8,20 @@ class BookingsController < ApplicationController
   def new
   end
 
-  def uptade
+  def update
   end
 
-  def delete
+  def destroy
+  end
+
+  def create
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:pet_id, :user_id)
   end
 end
