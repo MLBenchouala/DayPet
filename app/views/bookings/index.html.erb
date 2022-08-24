@@ -1,20 +1,19 @@
 <div class= "cards">
   <% @bookings.each do |booking| %>
     <% if booking.user_id == current_user.id %>
-      <div class="card">
-        <% if booking.pet.photo_url %>
-            <%= booking.pet.name %>
-            <%= booking.total_price %>
-            <%= booking.pet.race %></p>
-            <%= booking.pet.age  %></p>
-            <%= booking.pet.sexe %></p>
-            <%= booking.pet.location  %></p>
-            <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
-          <% else %>
-            <%= booking.pet.name %>
-            <%= booking.total_price %>
-          <%end %>
-      </div>
+      <div class="card-product my-3">
+        <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+        <div class="card-product-infos py-3">
+          <% if booking.pet.photo_url %>
+              <h3><%= booking.pet.name %></h3>
+              <p><%= booking.total_price %>$</p>
+              <p><%= booking.start_date %> | <%= booking.end_date %></p>
+            <% else %>
+              <%= booking.pet.name %>
+              <%= booking.total_price %>
+            <%end %>
+          </div>
+        </div>
     <% else %>
     <div></div>
 
