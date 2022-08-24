@@ -38,6 +38,27 @@
                   <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
 
                 </div>
+              </div>
+            </div>
+
+    <%= yield %>
+
+
+                <div class="footer">
+              <div class="footer-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+              </div>
+              <div class="footer-copyright">
+                This footer is made with <i class="fas fa-heart"></i> at Le Wagon
+              </div>
+              <p class="notice"><%= notice %></p>
+              <p class="alert"><%= alert %></p>
+            </div>
+=======
               </li>
           </ul>
         </div>
