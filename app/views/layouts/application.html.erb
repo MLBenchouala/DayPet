@@ -13,7 +13,7 @@
   <body>
           <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
               <div class="container-fluid">
-                <%= link_to "http://localhost:3000", class: "navbar-brand" do %>
+                <%= link_to root_path, class: "navbar-brand" do %>
                   <%= image_tag "Screenshot 2022-08-23 at 14.22.02.png" %>
                 <% end %>
 
@@ -23,8 +23,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto">
-
-                    <%# if user_signed_in? %>
+                    <%#if user_signed_in? %>
                       <li class="nav-item active">
                         <%= link_to "Home", root_path, class: "nav-link" %>
                       </li>
