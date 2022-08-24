@@ -1,8 +1,14 @@
-<div><%= image_tag @pet.photo_url, alt: @pet.name, class: "card" %>
+<div class="card mx-auto my-0 w-50"> <%= image_tag @pet.photo_url, alt: @pet.name %>
   <p><%= @pet.name %></p>
   <p><%= @pet.race %></p>
   <p><%= @pet.age  %></p>
   <p><%= @pet.sexe %></p>
   <p><%= @pet.location  %></p>
-  <p><%= link_to "Book Him", new_booking_path%> for only $<%= @pet.price  %> per day!</p>
 </div>
+
+        <h3>Book him for only $<%= @pet.price  %> per day!</h3>
+        <%= simple_form_for [@pet, @booking] do |f| %>
+          <%= f.input :start_date %>
+          <%= f.input :end_date %>
+          <%= f.submit class: 'btn btn-flat' %>
+        <% end %>

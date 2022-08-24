@@ -7,6 +7,8 @@ class PetsController < ApplicationController
 
   def show
     authorize @pet
+    @booking = Booking.new
+    authorize @booking
   end
 
   def new
