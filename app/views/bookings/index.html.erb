@@ -1,10 +1,23 @@
 <div class= "cards">
-    <% @bookings.each do |booking| %>
+  <% @bookings.each do |booking| %>
     <% if booking.user_id == current_user.id %>
-        <div class="card">
-            <h3><%=  booking.total_price  %></h3>
-            <% else %>
-        </div>
-      <% end %>
+      <div class="card">
+        <% if booking.pet.photo_url %>
+            <%= booking.pet.name %>
+            <%= booking.total_price %>
+            <%= booking.pet.race %></p>
+            <%= booking.pet.age  %></p>
+            <%= booking.pet.sexe %></p>
+            <%= booking.pet.location  %></p>
+            <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <% else %>
+            <%= booking.pet.name %>
+            <%= booking.total_price %>
+          <%end %>
+      </div>
+    <% else %>
+    <div></div>
+
     <% end %>
+  <% end %>
 </div>
