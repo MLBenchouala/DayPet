@@ -7,6 +7,7 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
 
+
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
@@ -14,4 +15,13 @@
 a {
   text-decoration: none;
   color: black;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 48px;
+}
+
+p {
+  font-size: 20px;
 }

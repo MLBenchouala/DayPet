@@ -18,7 +18,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.save
     if @booking.save
-      redirect_to bookings_path, notice: "Votre reservation a bien ete enregistre"
+      redirect_to bookings_path, notice: "Votre reservation a bien ete enregistrée"
     else
       render :new, status: :unprocessable_entity
     end
