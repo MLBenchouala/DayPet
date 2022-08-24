@@ -6,7 +6,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user.name
-
   end
 
   def contact
