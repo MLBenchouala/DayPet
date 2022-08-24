@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.pet = @pet
+    @booking.total_price = @booking.pet.price * (@booking.end_date - @booking.start_date + 1)
     authorize @booking
     @booking.save
     if @booking.save
