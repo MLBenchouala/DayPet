@@ -1,12 +1,15 @@
-<div class= "cards">
-    <% @pets.each do |pet| %>
-    <%= link_to pet_path(pet), class: "card" do %>
-        <div class="card">
-            <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img rounded-top" %>
-            <h3><%=  pet.name  %></h3>
-            <h3><%=  pet.location  %></h3>
-            <h3><%=  pet.age %></h3>
-        </div>
+<div class="banner p-5">
+  <h2>Discover our best friends</h2>
+  <div class= "cards">
+      <% @pets.each do |pet| %>
+      <%= link_to pet_path(pet), class: "card" do %>
+          <div class="card">
+              <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img rounded-top" %>
+              <h3>Hi ! My name is <%=  pet.name  %></h3>
+              <h3>I'm from<%=  pet.location  %></h3>
+              <h3>I'm <%=  pet.age %> years old</h3>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+  </div>
 </div>
