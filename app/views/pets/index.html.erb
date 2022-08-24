@@ -1,14 +1,16 @@
-
-<div class="banner p-5">
+<div class="container my-5">
   <h2>Discover our best friends</h2>
+  <p class="mb-5"><small><em>Choose your dog by clicking on a card</em></small></p>
   <div class= "cards">
       <% @pets.each do |pet| %>
-      <%= link_to pet_path(pet), class: "card" do %>
-          <div class="card">
-              <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img rounded-top" %>
-              <p>Hi ! My name is <%=  pet.name  %></p>
-              <p>I'm from<%=  pet.location  %></p>
-              <p>I'm <%=  pet.age %> years old</p>
+      <%= link_to pet_path(pet), class: "card card-pets" do %>
+          <div>
+              <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+              <div class="card-pets-content">
+                <h3>Hi ! My name is <strong><%=  pet.name  %></strong> </h3>
+                <p><i class="fa-solid fa-map-pin pe-3"></i> I'm from <%=  pet.location  %></p>
+                <p><i class="fa-solid fa-cake-candles pe-3"></i> I'm <%=  pet.age %> years old</p>
+              </div>
           </div>
         <% end %>
 
