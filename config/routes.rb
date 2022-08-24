@@ -9,4 +9,4 @@ Rails.application.routes.draw do
   resources :ratings
   get "dashoard", to: 'pages#dashboard'
   get "contact", to: 'pages#contact'
-
+end
