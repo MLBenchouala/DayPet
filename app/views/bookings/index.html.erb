@@ -1,22 +1,22 @@
-<div class= "cards">
-  <% @bookings.each do |booking| %>
-    <% if booking.user_id == current_user.id %>
-      <div class="card-product my-3">
-        <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
-        <div class="card-product-infos py-3">
-          <% if booking.pet.photo_url %>
-              <h3><%= booking.pet.name %></h3>
-              <p><%= booking.total_price %>$</p>
-              <p><%= booking.start_date %> | <%= booking.end_date %></p>
-            <% else %>
-              <%= booking.pet.name %>
-              <%= booking.total_price %>
-            <%end %>
+<div class= "container mt-5">
+  <h2>Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
+  <div class="grid-2">
+    <% @bookings.each do |booking| %>
+      <% if booking.user_id == current_user.id %>
+        <div class="card-product my-3">
+          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <div class="card-product-infos py-3">
+            <% if booking.pet.photo_url %>
+                <h3><%= booking.pet.name %></h3>
+                <p><%= booking.total_price %>$</p>
+                <p><%= booking.start_date %> | <%= booking.end_date %></p>
+              <% else %>
+                <%= booking.pet.name %>
+                <%= booking.total_price %>
+              <% end %>
+            </div>
           </div>
-        </div>
-    <% else %>
-    <div></div>
-
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
