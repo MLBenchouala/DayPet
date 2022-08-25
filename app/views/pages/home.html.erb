@@ -2,12 +2,12 @@
   <div class="container home-wrapper">
     <div class="row">
       <div class="col-6">
-        <%= image_tag("Sally", width: 100) %>
-        <h1>Get a pet for a day</h1>
+        <%= image_tag("Sally") %>
+        <h1>Get a <span class="pink-text">pet</span> for a day</h1>
         <p class="mb-4"> Welcome on DayPet ! Join us to discover our furry friends community to share an experience with the human's best friend ! </p>
         <div class="d-flex">
-          <input type="text" placeholder="Are you looking for pet in particular ?" class="me-2 searchbar">
-          <%= link_to 'Browse our pets', pets_path, class:"btn-pink"%>
+          <input type="text" placeholder="What are you looking for ?" class="me-2 searchbar">
+          <%= link_to 'Browse our pets', pets_path, class:"btn-pink pos-front"%>
         </div>
       </div>
     </div>
