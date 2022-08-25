@@ -1,26 +1,36 @@
 <div class="container my-5">
   <h2>Discover our best friends</h2>
   <p class="mb-5"><small><em>Choose your dog by clicking on a card</em></small></p>
-  <div class= "cards">
-      <% @pets.each do |pet| %>
-      <%= link_to pet_path(pet), class: "card card-pets" do %>
-          <div>
-              <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
-              <div class="card-pets-content">
-                <h3>Hi ! My name is <strong><%=  pet.name  %></strong> </h3>
-                <p><i class="fa-solid fa-map-pin pe-3"></i> I'm from <%=  pet.location  %></p>
-                <p><i class="fa-solid fa-cake-candles pe-3"></i> I'm <%=  pluralize(pet.age, 'year') %> old</p>
+  <div class="row">
+    <div class="col-8">
+      <div class= "cards">
+          <% @pets.each do |pet| %>
+          <%= link_to pet_path(pet), class: "card card-pets" do %>
+              <div>
+                  <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+                  <div class="card-pets-content">
+                    <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
+                    <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>
+                    <p><i class="fa-solid fa-cake-candles pe-3"></i><%=  pluralize(pet.age, 'year') %> old</p>
+                  </div>
+                  <% if pet.sexe == "male" %> <i class="fa-solid fa-mars gender-icon"></i> <% else %> <i class="fa-solid fa-venus gender-icon"></i> <% end %>
               </div>
-          </div>
-        <% end %>
-      <% end %>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-4 map-col">
+      <%# <p style="color: green"> %>
+      <%#= notice %>
+      <%# </p> %>
+      <div class="map" style="width: 100%; height: 520px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
 </div>
 
-<p style="color: green"><%= notice %></p>
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 <%# <%= link_to "New pet", new_pet_path %>

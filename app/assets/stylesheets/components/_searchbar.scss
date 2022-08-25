@@ -1,8 +1,12 @@
 .searchbar {
   width: 350px;
   padding-left: 20px;
+  border-radius: 5px;
+  border: #ff4b41b8 1.2px solid;
 }
 
 .searchbar::placeholder {
-  color:rgb(159, 159, 159);
+  color: #ff4b41;
+  opacity: .5;
+  font-style: italic;
 }
