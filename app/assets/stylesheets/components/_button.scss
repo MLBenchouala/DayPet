@@ -3,5 +3,12 @@
   padding: 10px 25px;
   color: white;
   font-weight: bold;
-  background-color: green;
+  background-color: #ff4b41;
+  border: 0;
+  text-align: center;
+  white-space: nowrap;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
 }

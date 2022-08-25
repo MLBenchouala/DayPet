@@ -1,20 +1,39 @@
 <div class="container my-5">
   <div class="d-flex">
     <div class="w-50">
-      <%= image_tag @pet.photo_url, alt: @pet.name %>
+      <%= image_tag @pet.photo_url, class: "img-show", style: "width: 100%;", alt: @pet.name %>
       <h2 class="mt-5">Hello my name is <strong><%= @pet.name %></strong></h2>
       <p class="mb-1"><em> <%= @pet.race %></em></p>
-      <p class="mb-1"><i class="fa-solid fa-cake-candles pe-2"></i> I'm <%= @pet.age  %> years old</p>
+      <p class="mb-1"><i class="fa-solid fa-cake-candles pe-2"></i> I'm <%= pluralize(@pet.age, 'year') %> old</p>
       <p class="mb-1"> <% if @pet.sexe == "male" %> <i class="fa-solid fa-mars"></i> <% else %> <i class="fa-solid fa-venus"></i> <% end %> </p>
       <p class="mb-1"><i class="fa-solid fa-map-pin pe-2"></i><%= @pet.location  %></p>
       <p class="mb-1"><%= link_to "Book Him", new_pet_booking_path(@pet)%> for only $<%= @pet.price  %> per day!</p>
     </div>
     <div class="ms-5">
       <h3>Book him for only $<%= @pet.price  %> per day!</h3>
-      <%= simple_form_for [@pet, @booking] do |f| %>
-        <%= f.input :start_date %>
-        <%= f.input :end_date %>
-        <%= f.submit class: 'btn btn-flat' %>
+      <%= simple_form_for [@pet, @booking],
+                          html: {
+                            data: {
+                              controller: 'flatpickr'
+                            }
+                          } do |f| %>
+        <%= f.input :start_date,
+                    as: :string,
+                    label: "Booking date",
+                    input_html: {
+                      data: {
+                        flatpickr_target: 'startDateInput',
+                      }
+                    } %>
+        <%= f.input :end_date,
+                    as: :string,
+                    wrapper_html: { class: 'd-none' },
+                    input_html: {
+                      data: {
+                        flatpickr_target: 'endDateInput'
+                      }
+                    } %>
+        <%= f.submit 'Book now!', class: 'btn-pink' %>
       <% end %>
     </div>
   </div>
