@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
-        <h3>Create a pet listing</h3>
+        <h3 class="mb-5">Add a new friend to our amazing community</h3>
         <%= simple_form_for @pet do |f| %>
           <%= f.input :name, placeholder: 'Rex' %>
           <%= f.input :photo_url, placeholder: 'a cute picture of your doggo' %>
@@ -12,10 +12,10 @@
           <%= f.input :race , placeholder: 'Bulldog' %>
           <%= f.input :price , placeholder: '10$ a day' %>
           <%= f.input :location , placeholder: 'Paris' %>
-          <%= f.submit class: 'btn btn-flat' %>
+          <%= f.submit "Add a new friend", class: 'mt-4 btn-pink' %>
         <% end %>
       </div>
     </div>
   </div>
+  <%= link_to 'show all your pet listings',  pets_path %>
 </div>
-<%= link_to 'show all your pet listings',  pets_path %>
