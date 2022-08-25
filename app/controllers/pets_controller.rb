@@ -3,6 +3,14 @@ class PetsController < ApplicationController
 
   def index
     @pets = policy_scope(Pet)
+    @markers = @pets.geocoded.map do |pet|
+      {
+        lat: pet.latitude,
+        lng: pet.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {pet: pet}),
+        image_url: helpers.image_url("logo.jpeg")
+      }
+    end
   end
 
   def show
