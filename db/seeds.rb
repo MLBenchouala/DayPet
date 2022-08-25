@@ -13,8 +13,6 @@ user_5 = User.create(name: "Annika", number: "06 22 17 83 48", photo_url: "https
 user_5.save!
 user_6 = User.create(name: "Olivia", number: "06 35 10 46 89", photo_url: "https://picsum.photos/200/300", email: "test.exempl@tst.com", password: "123456")
 user_6.save!
-user_boss = User.create(name: "Roslan", number: "06 50 38 22 54", photo_url: "https://fr.freepik.com/photos/nature", email: "roslan@ph.com", password: "weewee")
-user_boss.save!
 
 pet_1 = Pet.create(name: "Rex", sexe: "male", race: "Labrador", age: 5, photo_url: "https://static.wamiz.com/images/animaux/chiens/large/labrador-retriever.jpg", user: user_1, price: 50, location: "Paris")
 pet_1.save!
