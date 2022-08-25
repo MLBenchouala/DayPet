@@ -9,7 +9,7 @@
               <div class="card-pets-content">
                 <h3>Hi ! My name is <strong><%=  pet.name  %></strong> </h3>
                 <p><i class="fa-solid fa-map-pin pe-3"></i> I'm from <%=  pet.location  %></p>
-                <p><i class="fa-solid fa-cake-candles pe-3"></i> I'm <%=  pet.age %> years old</p>
+                <p><i class="fa-solid fa-cake-candles pe-3"></i> I'm <%=  pluralize(pet.age, 'year') %> old</p>
               </div>
           </div>
         <% end %>

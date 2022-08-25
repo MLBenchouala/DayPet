@@ -4,4 +4,11 @@
   color: white;
   font-weight: bold;
   background-color: #ff4b41;
+  border: 0;
+  text-align: center;
+  white-space: nowrap;
+  &:hover {
+    text-decoration: none;
+    color: black;
+  }
 }

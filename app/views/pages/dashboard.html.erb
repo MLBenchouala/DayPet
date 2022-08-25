@@ -1,2 +1,60 @@
 <p>Hello <%= current_user.email %></p>
 <p><%= link_to 'change profile', edit_user_registration_path %></p>
+
+<div class= "container mt-5">
+  <h2>Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
+  <div class="grid-2">
+    <%# current_user.bookings.each do |booking| %>
+    <h3>Bookings you've made:</h3>
+    <% @bookings_i_made.each do |booking| %>
+      <%# if booking.user_id == current_user.id %>
+        <div class="card-product my-3">
+          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <div class="card-product-infos py-3">
+            <% if booking.pet.photo_url %>
+                <h3><%= booking.pet.name %></h3>
+                <p><%= booking.total_price %>$</p>
+                <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
+                <p>You've booked <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
+                <p>Status of the reservation: <%= booking.status %></p>
+              <% else %>
+                <%= booking.pet.name %>
+                <%= booking.total_price %>
+              <% end %>
+          </div>
+        </div>
+      <%# end %>
+    <% end %>
+  </div>
+
+  <div class="grid-2">
+    <h3>Bookings on your pets:</h3>
+    <% @booking_made_on_my_pets.each do |booking| %>
+      <%# if booking.user_id == current_user.id %>
+        <div class="card-product my-3">
+          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <div class="card-product-infos py-3">
+            <% if booking.pet.photo_url %>
+                <h3><%= booking.pet.name %></h3>
+                <p><%= booking.total_price %>$</p>
+                <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
+                <p>Booked for <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
+                <% if booking.status == "pending" %>
+                <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch } %>
+                <%= link_to "Decline", decline_booking_path(booking), data: { turbo_method: :patch } %>
+                <% else %>
+                <p>Status of the reservation: <%= booking.status %></p>
+                <% end %>
+              <% else %>
+                <%= booking.pet.name %>
+                <%= booking.total_price %>
+              <% end %>
+          </div>
+        </div>
+      <%# end %>
+    <% end %>
+  </div>
+</div>
+<div>
+
+</div>

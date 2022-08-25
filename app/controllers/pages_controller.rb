@@ -5,7 +5,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user.name
+    @user = current_user
+    @bookings_i_made = @user.bookings
+
+    id_of_my_pets = @user.pets.pluck(:id)
+    @booking_made_on_my_pets = Booking.where(pet_id: id_of_my_pets)
   end
 
   def contact

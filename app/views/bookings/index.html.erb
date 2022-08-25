@@ -9,7 +9,8 @@
             <% if booking.pet.photo_url %>
                 <h3><%= booking.pet.name %></h3>
                 <p><%= booking.total_price %>$</p>
-                <p><%= booking.start_date %> | <%= booking.end_date %></p>
+                <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
+                <p>You've booked <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
               <% else %>
                 <%= booking.pet.name %>
                 <%= booking.total_price %>
