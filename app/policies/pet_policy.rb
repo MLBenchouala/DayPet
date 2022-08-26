@@ -27,7 +27,7 @@ class PetPolicy < ApplicationPolicy
   end
 
   def edit?
-    current_user.id == pet.user_id
+    @user.id == @record.user_id
   end
 
   def update?

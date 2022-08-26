@@ -56,5 +56,19 @@
       <%# end %>
     <% end %>
   </div>
-</div>
-<div>
+    <div class="grid-2">
+      <h3>Your pets:</h3>
+         <% @pets.each do |pet| %>
+            <div class="card-product my-3">
+              <%= image_tag pet.photo_url, alt: pet.name %>
+              <div class="card-product-infos py-3">
+                  <% if pet.photo_url %>
+                    <h3><%= pet.name %></h3>
+                    <p><%= pet.price %>$</p>
+                    <%= link_to "Delete", pet_path(pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
+                  <% end %>
+              </div>
+          <% end %>
+     </div>
+     <%= link_to "Add a new pet listing", new_pet_path %>
+ </div>
