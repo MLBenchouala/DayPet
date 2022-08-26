@@ -1,13 +1,15 @@
 <div class="container my-5">
   <div class="d-flex">
     <div class="w-50">
-      <%= image_tag @pet.photo_url, class: "img-show", style: "width: 100%;", alt: @pet.name %>
-      <h2 class="mt-5">Hello my name is <strong><%= @pet.name %></strong></h2>
-      <p class="mb-1"><em> <%= @pet.race %></em></p>
-      <p class="mb-1"><i class="fa-solid fa-cake-candles pe-2"></i> I'm <%= pluralize(@pet.age, 'year') %> old</p>
-      <p class="mb-1"> <% if @pet.sexe == "male" %> <i class="fa-solid fa-mars"></i> <% else %> <i class="fa-solid fa-venus"></i> <% end %> </p>
-      <p class="mb-1"><i class="fa-solid fa-map-pin pe-2"></i><%= @pet.location  %></p>
-      <p class="mb-1"><%= link_to "Book Him", new_pet_booking_path(@pet)%> for only $<%= @pet.price  %> per day!</p>
+      <%= image_tag @pet.photo_url, class: "dog_image", style: "width: 100%;", alt: @pet.name %>
+      <div class="info">
+        <h2 class="mt-5">Hello my name is <strong><%= @pet.name %></strong></h2>
+        <p class="mb-1"><em> <%= @pet.race %></em></p>
+        <p class="mb-1"><i class="fa-solid fa-cake-candles pe-2"></i> I'm <%= pluralize(@pet.age, 'year') %> old</p>
+        <p class="mb-1"> <% if @pet.sexe == "male" %> <i class="fa-solid fa-mars"></i> <% else %> <i class="fa-solid fa-venus"></i> <% end %> </p>
+        <p class="mb-1"><i class="fa-solid fa-map-pin pe-2"></i><%= @pet.location  %></p>
+        <p class="mb-1"><%= link_to "Book Him", new_pet_booking_path(@pet)%> for only $<%= @pet.price  %> per day!</p>
+      </div>
     </div>
     <div class="ms-5">
       <h3>Book him for only $<%= @pet.price  %> per day!</h3>
@@ -35,6 +37,8 @@
                     } %>
         <%= f.submit 'Book now!', class: 'btn-pink' %>
       <% end %>
+    </div>
+    <div>
     </div>
   </div>
 </div>
