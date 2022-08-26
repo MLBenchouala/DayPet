@@ -32,7 +32,7 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    redirect_to pets_path, status: :see_other
+    redirect_to dashboard_path
     authorize @pet
   end
 
@@ -41,7 +41,7 @@ class PetsController < ApplicationController
     @pet.user = current_user
     authorize @pet
     if @pet.save
-      redirect_to pet_path(@pet)
+      redirect_to dashboard_path
     else
       render :new, status: :unprocessable_entity
     end
