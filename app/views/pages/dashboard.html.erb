@@ -3,72 +3,84 @@
 <%# <p><%= link_to 'change profile', edit_user_registration_path %>
 <%# </p> %>
 
-<div class= "container mt-5">
-  <h2>Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
-  <div class="grid-2">
-    <%# current_user.bookings.each do |booking| %>
-    <h3>Bookings you've made:</h3>
-    <% @bookings_i_made.each do |booking| %>
-      <%# if booking.user_id == current_user.id %>
-        <div class="card-product my-3">
-          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
-          <div class="card-product-infos py-3">
-            <% if booking.pet.photo_url %>
-                <h3><%= booking.pet.name %></h3>
-                <p><%= booking.total_price %>$</p>
-                <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
-                <p>You've booked <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
-                <p>Status of the reservation: <%= booking.status %></p>
-              <% else %>
-                <%= booking.pet.name %>
-                <%= booking.total_price %>
-              <% end %>
-          </div>
-        </div>
-      <%# end %>
-    <% end %>
-  </div>
-
-  <div class="grid-2">
-    <h3>Bookings on your pets:</h3>
-    <% @booking_made_on_my_pets.each do |booking| %>
-      <%# if booking.user_id == current_user.id %>
-        <div class="card-product my-3">
-          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
-          <div class="card-product-infos py-3">
-            <% if booking.pet.photo_url %>
-                <h3><%= booking.pet.name %></h3>
-                <p><%= booking.total_price %>$</p>
-                <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
-                <p>Booked for <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
-                <% if booking.status == "pending" %>
-                <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch } %>
-                <%= link_to "Decline", decline_booking_path(booking), data: { turbo_method: :patch } %>
-                <% else %>
-                <p>Status of the reservation: <%= booking.status %></p>
-                <% end %>
-              <% else %>
-                <%= booking.pet.name %>
-                <%= booking.total_price %>
-              <% end %>
-          </div>
-        </div>
-      <%# end %>
-    <% end %>
-  </div>
-    <div class="grid-2">
-      <h3>Your pets:</h3>
-         <% @pets.each do |pet| %>
-            <div class="card-product my-3">
-              <%= image_tag pet.photo_url, alt: pet.name %>
-              <div class="card-product-infos py-3">
-                  <% if pet.photo_url %>
-                    <h3><%= pet.name %></h3>
-                    <p><%= pet.price %>$</p>
-                    <%= link_to "Delete", pet_path(pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-                  <% end %>
+<div class="container">
+  <div class="row">
+      <h2 class="pt-5 pb-5">Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
+      <div class="col-4">
+        <h3 class="pb-4">Bookings you've made:</h3>
+        <div class="">
+        <%# current_user.bookings.each do |booking| %>
+          <% @bookings_i_made.each do |booking| %>
+            <%# if booking.user_id == current_user.id %>
+              <div class="card-product my-3">
+                <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+                <div class="card-product-infos py-3">
+                  <% if booking.pet.photo_url %>
+                      <h5><%= booking.pet.name %></h5>
+                      <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %> for <strong><%= booking.total_price %>$</strong></p>
+                      <p>You've booked <strong><%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></strong></p>
+                      <p>Status of the reservation: <%= booking.status %></p>
+                    <% else %>
+                      <%= booking.pet.name %>
+                      <%= booking.total_price %>
+                    <% end %>
+                </div>
               </div>
+            <%# end %>
           <% end %>
-     </div>
-     <%= link_to "Add a new pet listing", new_pet_path %>
- </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <h3 class="pb-4">Bookings on your pets:</h3>
+        <div class="">
+          <% @booking_made_on_my_pets.each do |booking| %>
+            <%# if booking.user_id == current_user.id %>
+              <div class="card-product my-3">
+                <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+                <div class="card-product-infos py-3">
+                  <% if booking.pet.photo_url %>
+                    <h3><%= booking.pet.name %></h3>
+                    <p><%= booking.total_price %>$</p>
+                    <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
+                    <p>Booked for <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
+                    <% if booking.status == "pending" %>
+                      <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch } %>
+                      <%= link_to "Decline", decline_booking_path(booking), data: { turbo_method: :patch } %>
+                    <% else %>
+                      <p>Status of the reservation: <%= booking.status %></p>
+                    <% end %>
+                  <% else %>
+                    <%= booking.pet.name %>
+                    <%= booking.total_price %>
+                  <% end %>
+                </div>
+              </div>
+            <%# end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <h3 class="pb-4">Your pets:</h3>
+        <div class="">
+          <% @pets.each do |pet| %>
+            <%= link_to pet_path(pet), class: "card card-pets w-100 mb-3" do %>
+               <div>
+                   <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+                   <div class="card-pets-content">
+                     <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
+                     <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>
+                     <p><i class="fa-solid fa-cake-candles pe-3"></i><%=  pluralize(pet.age, 'year') %> old</p>
+                   </div>
+                   <% if pet.sexe == "male" %> <i class="fa-solid fa-mars gender-icon"></i> <% else %> <i class="fa-solid fa-venus gender-icon"></i> <% end %>
+               </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="pt-4">
+           <%= link_to "Add a new pet listing", new_pet_path %>
+        </div>
+      </div>
+  </div>
+</div>
