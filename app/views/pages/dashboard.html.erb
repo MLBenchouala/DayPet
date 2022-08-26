@@ -11,9 +11,9 @@
     <% @bookings_i_made.each do |booking| %>
       <%# if booking.user_id == current_user.id %>
         <div class="card-product my-3">
-          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, crop: :fill %>
           <div class="card-product-infos py-3">
-            <% if booking.pet.photo_url %>
+            <% if booking.pet.photo.key %>
                 <h3><%= booking.pet.name %></h3>
                 <p><%= booking.total_price %>$</p>
                 <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
@@ -34,9 +34,9 @@
     <% @booking_made_on_my_pets.each do |booking| %>
       <%# if booking.user_id == current_user.id %>
         <div class="card-product my-3">
-          <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+          <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, crop: :fill %>
           <div class="card-product-infos py-3">
-            <% if booking.pet.photo_url %>
+            <% if booking.pet.photo.key %>
                 <h3><%= booking.pet.name %></h3>
                 <p><%= booking.total_price %>$</p>
                 <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %></p>
@@ -59,18 +59,16 @@
 
   <div class="grid-2">
     <h3>Your pets:</h3>
-    <% @pets.each do |pet| %>
+     <% @pets.each do |pet| %>
         <div class="card-product my-3">
-          <%= image_tag pet.photo_url, alt: pet.name %>
-          <div class="card-product-infos py-3">
-              <% if pet.photo_url %>
+            <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-product-infos py-3">
                 <h3><%= pet.name %></h3>
                 <p><%= pet.price %>$</p>
                 <%= link_to "Delete", pet_path(pet), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
-              <% end %>
-          </div>
+             </div>
         </div>
-    <% end %>
+     <% end %>
   </div>
 
   <%= link_to "Add a new pet listing", new_pet_path %>
