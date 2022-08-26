@@ -6,7 +6,7 @@
         <h3 class="mb-5">Add a new friend to our amazing community</h3>
         <%= simple_form_for @pet do |f| %>
           <%= f.input :name, placeholder: 'Rex' %>
-          <%= f.input :photo_url, placeholder: 'a cute picture of your doggo' %>
+          <%= f.input :photo, as: :file %>
           <%= f.input :age , placeholder: '3' %>
           <%= f.input :sexe , placeholder: 'male' %>
           <%= f.input :race , placeholder: 'Bulldog' %>

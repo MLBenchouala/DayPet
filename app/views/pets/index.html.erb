@@ -8,7 +8,7 @@
             <% if pet.user_id != current_user.id  %>
                 <%= link_to pet_path(pet), class: "card card-pets" do %>
                     <div>
-                        <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+                         <%= cl_image_tag pet.photo.key, height: 300, width: 400, crop: :fill %>
                         <div class="card-pets-content">
                           <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
                           <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>
