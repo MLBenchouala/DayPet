@@ -13,7 +13,7 @@ class PetsController < ApplicationController
         lat: pet.latitude,
         lng: pet.longitude,
         info_window: render_to_string(partial: "info_window", locals: {pet: pet}),
-        image_url: helpers.image_url("logo.jpeg")
+        image_url: helpers.image_url("https://cdn-icons-png.flaticon.com/512/2064/2064847.png")
       }
     end
   end
