@@ -14,7 +14,7 @@
               <div class="card-product my-3">
                 <%= cl_image_tag booking.pet.photo.key %>
                 <div class="card-product-infos py-3">
-                  <% if booking.pet.photo_url %>
+                  <% if booking.pet.photo.key %>
                       <h5><%= booking.pet.name %></h5>
                       <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %> for <strong><%= booking.total_price %>$</strong></p>
                       <p>You've booked <strong><%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></strong></p>
