@@ -5,12 +5,10 @@
         <%= image_tag("Sally") %>
         <h1>Get a <span class="pink-text">pet</span> for a day</h1>
         <p class="mb-4"> Welcome on DayPet ! Join us to discover our furry friends community to share an experience with the human's best friend ! </p>
-        <div class="d-flex">
-          <%= form_tag pets_path, method: :get do %>
+          <%= form_tag pets_path, method: :get, class:"d-flex" do %>
             <%= text_field_tag :query, params[:query], placeholder: "What are you looking for ?",  class:"me-2 searchbar" %>
             <button type="submit" class="btn-pink pos-front">  Browse our pets </button>
           <% end %>
-        </div>
       </div>
     </div>
   </div>
@@ -29,12 +27,12 @@
 
 <div class="home-content-bottom p-5">
   <div class="container home-wrapper">
-    <div class="row justify-content-end">
-      <div class="col-6">
-        <h2>Share your pets with the PettyLovers community< /h2>
+    <div class="row justify-content-end py-5">
+      <div class="col-6 relative-pos-txt">
+        <h2>Share your pets with the PettyLovers community</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore dignissimos quasi velit qui doloremque dicta ut laborum hic consectetur nam vel, inventore cumque iusto in perspiciatis ea voluptas iure? Pariatur.</p>
+        <%= image_tag "Sally-chien", class:"absolute-img-home" %>
       </div>
     </div>
   </div>
 </div>
-      <%= image_tag("Sally-chien"); %>
