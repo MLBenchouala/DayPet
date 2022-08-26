@@ -2,7 +2,6 @@
 <%# </p> %>
 <%# <p><%= link_to 'change profile', edit_user_registration_path %>
 <%# </p> %>
-
 <div class="container">
   <div class="row">
       <h2 class="pt-5 pb-5">Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
@@ -13,7 +12,7 @@
           <% @bookings_i_made.each do |booking| %>
             <%# if booking.user_id == current_user.id %>
               <div class="card-product my-3">
-                <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+                <%= cl_image_tag booking.pet.photo.key %>
                 <div class="card-product-infos py-3">
                   <% if booking.pet.photo_url %>
                       <h5><%= booking.pet.name %></h5>
@@ -37,7 +36,7 @@
           <% @booking_made_on_my_pets.each do |booking| %>
             <%# if booking.user_id == current_user.id %>
               <div class="card-product my-3">
-                <%= image_tag booking.pet.photo_url, alt: booking.pet.name %>
+                <%= cl_image_tag booking.pet.photo.key %>
                 <div class="card-product-infos py-3">
                   <% if booking.pet.photo_url %>
                     <h5><%= booking.pet.name %></h5>
@@ -66,7 +65,7 @@
           <% @pets.each do |pet| %>
             <%= link_to pet_path(pet), class: "card card-pets w-100 mb-3" do %>
                <div>
-                   <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+                    <%= cl_image_tag pet.photo.key, class: "pet-img"%>
                    <div class="card-pets-content">
                      <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
                      <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>

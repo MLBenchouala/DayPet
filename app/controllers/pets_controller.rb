@@ -13,7 +13,7 @@ class PetsController < ApplicationController
         lat: pet.latitude,
         lng: pet.longitude,
         info_window: render_to_string(partial: "info_window", locals: {pet: pet}),
-        image_url: helpers.image_url("logo.jpeg")
+        image_url: helpers.image_url("https://cdn-icons-png.flaticon.com/512/2064/2064847.png")
       }
     end
   end
@@ -55,7 +55,7 @@ class PetsController < ApplicationController
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :sexe, :race, :age, :photo_url, :price, :user_id, :location)
+    params.require(:pet).permit(:name, :sexe, :race, :age, :photo_url, :price, :user_id, :location, :photo)
   end
 
   def set_pet
