@@ -3,6 +3,11 @@ class PetsController < ApplicationController
 
   def index
     @pets = policy_scope(Pet)
+    if params[:query].present?
+      @pets = Pet.global_search(params[:query])
+    else
+      @pets = Pet.all
+    end
     @markers = @pets.geocoded.map do |pet|
       {
         lat: pet.latitude,
