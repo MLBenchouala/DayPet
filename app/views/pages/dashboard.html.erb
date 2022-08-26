@@ -43,7 +43,7 @@
                     <p><%= booking.start_date.strftime("%m/%d/%Y") %> | <%= booking.end_date.strftime("%m/%d/%Y") %> for <strong><%= booking.total_price %>$</strong></p>
                     <p>Booked for <%= pluralize((booking.end_date - booking.start_date).to_i + 1, 'day') %></p>
                     <% if booking.status == "pending" %>
-                      <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch }, class: "me-2"; style:"font-size: 13px; font-weight: bold; color:#5fc85f" %>
+                      <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch }, class: "me-2", style: "font-size: 13px; font-weight: bold; color:#5fc85f" %>
                       <%= link_to "Decline", decline_booking_path(booking), data: { turbo_method: :patch }, style:"font-size: 13px; font-weight: bold; color:red" %>
                     <% else %>
                       <p>Status of the reservation: <%= booking.status %></p>
