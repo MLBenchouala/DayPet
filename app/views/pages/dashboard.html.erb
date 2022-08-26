@@ -1,5 +1,7 @@
-<p>Hello <%= current_user.email %></p>
-<p><%= link_to 'change profile', edit_user_registration_path %></p>
+<%# <p>Hello <%= current_user.email %>
+<%# </p> %>
+<%# <p><%= link_to 'change profile', edit_user_registration_path %>
+<%# </p> %>
 
 <div class= "container mt-5">
   <h2>Hello <strong><%= current_user.name %></strong>, you have <%= current_user.bookings.length %> bookings in pending</h2>
