@@ -4,18 +4,20 @@
   <div class="row">
     <div class="col-8">
       <div class= "cards">
-          <% @pets.each do |pet| %>
-          <%= link_to pet_path(pet), class: "card card-pets" do %>
-              <div>
-                  <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
-                  <div class="card-pets-content">
-                    <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
-                    <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>
-                    <p><i class="fa-solid fa-cake-candles pe-3"></i><%=  pluralize(pet.age, 'year') %> old</p>
-                  </div>
-                  <% if pet.sexe == "male" %> <i class="fa-solid fa-mars gender-icon"></i> <% else %> <i class="fa-solid fa-venus gender-icon"></i> <% end %>
-              </div>
-            <% end %>
+         <% @pets.each do |pet| %>
+            <% if pet.user_id != current_user.id  %>
+                <%= link_to pet_path(pet), class: "card card-pets" do %>
+                    <div>
+                        <%= image_tag pet.photo_url, alt: pet.name, class: "pet-img" %>
+                        <div class="card-pets-content">
+                          <h3><strong class="pe-1"><%=  pet.name  %></strong> <em><%= pet.user.name%>'s <% if pet.sexe == "male" %> son <% else %> daughter<% end %></em></h3>
+                          <p><i class="fa-solid fa-map-pin pe-3"></i> From <%=  pet.location  %></p>
+                          <p><i class="fa-solid fa-cake-candles pe-3"></i><%=  pluralize(pet.age, 'year') %> old</p>
+                        </div>
+                        <% if pet.sexe == "male" %> <i class="fa-solid fa-mars gender-icon"></i> <% else %> <i class="fa-solid fa-venus gender-icon"></i> <% end %>
+                    </div>
+                 <% end %>
+             <% end %>
           <% end %>
       </div>
     </div>
@@ -31,6 +33,5 @@
     </div>
   </div>
 </div>
-
 
 <%# <%= link_to "New pet", new_pet_path %>

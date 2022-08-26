@@ -12,33 +12,32 @@
       </div>
     </div>
     <div class="ms-5">
-      <h3>Book him for only $<%= @pet.price  %> per day!</h3>
-      <%= simple_form_for [@pet, @booking],
-                          html: {
-                            data: {
-                              controller: 'flatpickr'
-                            }
-                          } do |f| %>
-        <%= f.input :start_date,
-                    as: :string,
-                    label: "Booking date",
-                    input_html: {
-                      data: {
-                        flatpickr_target: 'startDateInput',
-                      }
-                    } %>
-        <%= f.input :end_date,
-                    as: :string,
-                    wrapper_html: { class: 'd-none' },
-                    input_html: {
-                      data: {
-                        flatpickr_target: 'endDateInput'
-                      }
-                    } %>
-        <%= f.submit 'Book now!', class: 'btn-pink' %>
-      <% end %>
-    </div>
-    <div>
-    </div>
+
+          <h3>Book him for only $<%= @pet.price  %> per day!</h3>
+          <%= simple_form_for [@pet, @booking],
+                              html: {
+                                data: {
+                                  controller: 'flatpickr'
+                                }
+                              } do |f| %>
+            <%= f.input :start_date,
+                        as: :string,
+                        label: "Booking date",
+                        input_html: {
+                          data: {
+                            flatpickr_target: 'startDateInput',
+                          }
+                        } %>
+            <%= f.input :end_date,
+                        as: :string,
+                        wrapper_html: { class: 'd-none' },
+                        input_html: {
+                          data: {
+                            flatpickr_target: 'endDateInput'
+                          }
+                        } %>
+            <%= f.submit 'Book now!', class: 'btn-pink' %>
+          <% end %>
+     </div>
   </div>
 </div>
